@@ -140,26 +140,6 @@ Contributions are welcome! Please feel free to submit a Pull Request. For major 
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## ⚠️ Disclaimer
-
-This tool is for educational and research purposes. Please ensure you comply with:
-- Website terms of service
-- Robots.txt files
-- Rate limiting guidelines
-- Applicable laws and regulations
-
-Always respect website owners' rights and use this tool responsibly.
-
-## 📞 Support
-
-If you encounter any issues or have questions:
-1. Check the [Issues](https://github.com/Hardik-Joshi123/dynamic-autoscraper/issues) page
-2. Create a new issue with detailed information
-3. Include your configuration and error messages
-
-## ⭐ Star History
-
-If you find this project useful, please consider giving it a star on GitHub!
 
 ---
 
