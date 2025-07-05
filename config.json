@@ -1,0 +1,12 @@
+{
+    "start_urls": [
+      "https://your-website.com"
+    ],
+    "examples": [
+      "Example Item 1",
+      "Example Item 2",
+      "Example Item 3"
+    ],
+    "pagination_selector": null
+  }
+  
