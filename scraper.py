@@ -1,12 +1,3 @@
-"""
-Dynamic Web Scraper: Playwright + Autoscraper + Pagination
-✅ Fixed: No connection adapters error
-✅ Uses Playwright to render dynamic JS content
-✅ Uses Autoscraper to learn & reuse patterns
-✅ Supports multi-page crawling
-✅ Saves results to CSV
-"""
-
 import json
 import asyncio
 import pandas as pd
@@ -16,9 +7,7 @@ from urllib.parse import urljoin
 import os
 from bs4 import BeautifulSoup
 
-# -----------------------------
-# Load your config
-# -----------------------------
+
 with open('config.json') as f:
     config = json.load(f)
 
@@ -26,9 +15,7 @@ START_URLS = config['start_urls']
 EXAMPLES = config['examples']
 PAGINATION_SELECTOR = config.get('pagination_selector')
 
-# -----------------------------
-# Main scraper coroutine
-# -----------------------------
+
 async def scrape_url(url):
     async with async_playwright() as p:
         browser = await p.chromium.launch(headless=True)
@@ -39,7 +26,6 @@ async def scrape_url(url):
 
         current_url = url
 
-        # ✅ Train Autoscraper ONCE with static URL
         print(f"Training Autoscraper on: {current_url}")
         scraper = AutoScraper()
         scraper.build(current_url, EXAMPLES)
@@ -67,7 +53,7 @@ async def scrape_url(url):
                 # Method 2: Look for links that might be headlines
                 for link in soup.find_all('a', href=True):
                     text = link.get_text().strip()
-                    if text and len(text) > 10 and len(text) < 200:  # Reasonable headline length
+                    if text and len(text) > 10 and len(text) < 200: 
                         headlines.append(text)
                 
                 # Method 3: Try Autoscraper as backup
@@ -88,9 +74,6 @@ async def scrape_url(url):
             except Exception as e:
                 print(f"Scraping error at {current_url}: {e}")
 
-            # --------------------------
-            # Handle pagination
-            # --------------------------
             if PAGINATION_SELECTOR:
                 try:
                     next_page = await page.query_selector(PAGINATION_SELECTOR)
@@ -113,9 +96,6 @@ async def scrape_url(url):
         await browser.close()
         return all_results
 
-# -----------------------------
-# Run for all start URLs
-# -----------------------------
 async def main():
     total_results = []
     for url in START_URLS:
